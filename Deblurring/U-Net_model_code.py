@@ -105,8 +105,6 @@ model.save('UNET_model_0530.keras')
 
 
 
-# In[11]:
-
 
 import numpy as np
 import tensorflow as tf
@@ -162,7 +160,6 @@ plt.imshow(array_to_img(predicted_image[0]))
 plt.show()
 
 
-# In[9]:
 
 
 import os
