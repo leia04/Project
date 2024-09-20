@@ -330,7 +330,6 @@ predicted_image = predict_image(generator, blur_image)
 display_images(blur_image, predicted_image)
 
 
-# In[11]:
 
 
 import os
