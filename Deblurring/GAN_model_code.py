@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 import os
 import numpy as np
 import tensorflow as tf
@@ -269,9 +266,6 @@ for epoch in range(epoch_num):
     train(train_dataset, num_epochs=1)
 
 g.save('GAN_model_final_2.h5')
-
-
-# In[9]:
 
 
 import numpy as np
