@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[20]:
-
-
 import os
 import tensorflow as tf
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Conv2DTranspose, concatenate, Input
@@ -87,20 +84,16 @@ def unet_model(input_size=(256, 256, 3)):
     model = Model(inputs, outputs, name='U-Net')
     return model
 
-# 데이터셋 경로
 root_dir = 'GOPRO_Large/train'
 max_images = 50
 
 train_dataset = load_image_pairs(root_dir, max_images).batch(2)
 
-# 모델 인스턴스 생성 및 컴파일
 model = unet_model()
 model.compile(optimizer='adam', loss='mse')
 
-# 모델 학습
 model.fit(train_dataset, epochs=5)
 
-# 모델 저장
 model.save('UNET_model_0530.keras')
 
 
@@ -130,15 +123,12 @@ def postprocess_image(image_array):
 model = load_model('UNET_model_0530.keras')
 
 # 예측할 이미지 경로
-image_path = 'KakaoTalk_Image_2024-05-30-23-06-49_004.jpeg'
+image_path = 'image_path'
 
-# 이미지 전처리
 input_image = preprocess_image(image_path)
 
-# 모델 예측
 predicted_image = model.predict(input_image)
 
-# 예측 결과 후처리
 input_image_rescaled = postprocess_image(input_image[0])
 predicted_image_rescaled = postprocess_image(predicted_image[0])
 
@@ -239,13 +229,10 @@ def evaluate_performance(model, blur_images, sharp_images):
 test_root_dir = 'GOPRO_Large/test'
 max_images = 20
 
-# 테스트 데이터 로드
 blur_images_test, sharp_images_test = load_image_pairs(test_root_dir, max_images)
 
-# 모델 로드
 loaded_model = load_model('UNET_model_0530.keras')
 
-# 모델 성능 평가
 mean_psnr, mean_ssim = evaluate_performance(loaded_model, blur_images_test, sharp_images_test)
 
 print(f'Mean PSNR: {mean_psnr}')
