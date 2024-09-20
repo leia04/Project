@@ -321,7 +321,7 @@ def display_images(blur_image, predicted_image):
 def predict_image(generator, blur_image):
     return generator(blur_image, training=False)
 
-blur_image_path = 'KakaoTalk_Image_2024-05-30-23-06-49_004.jpeg'
+blur_image_path = 'your_image_path'
 
 blur_image = load_and_preprocess_image(blur_image_path)
 
